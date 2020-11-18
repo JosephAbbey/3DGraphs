@@ -1,23 +1,46 @@
-let MadeleinaSans;
+let Font;
 function preload() {
-    MadeleinaSans = loadFont("./MadeleinaSans.otf");
+    Font = loadFont("");
 }
 
 var size = 100;
-var textCont = "text";
+var textCont = "Title";
 var B1 = 10,
     B2 = 10,
     B3 = 10,
     B4 = 10;
 
 var settings = QuickSettings.create();
-settings.addText("Text", "Text", function (value) {
+settings.addText("Title", "Title", function (value) {
+    textCont = value;
+});
+settings.addText("Font (URL)", "Title", function (value) {
     textCont = value;
 });
 settings.addRange("Size", 0, 1000, 100, 1, function (value) {
     size = value;
+    if (B1 <= value) {
+        settings.setRangeParameters("Bar 1 size", 0, value, B1, 1);
+    } else {
+        settings.setRangeParameters("Bar 1 size", 0, value, 10, 1);
+    }
+    if (B2 <= value) {
+        settings.setRangeParameters("Bar 2 size", 0, value, B2, 1);
+    } else {
+        settings.setRangeParameters("Bar 2 size", 0, value, 10, 1);
+    }
+    if (B3 <= value) {
+        settings.setRangeParameters("Bar 3 size", 0, value, B3, 1);
+    } else {
+        settings.setRangeParameters("Bar 3 size", 0, value, 10, 1);
+    }
+    if (B4 <= value) {
+        settings.setRangeParameters("Bar 4 size", 0, value, B4, 1);
+    } else {
+        settings.setRangeParameters("Bar 4 size", 0, value, 10, 1);
+    }
 });
-settings.addRange("Bar 1 size", 1, size, 10, 1, function (value) {
+settings.addRange("Bar 1 size", 0, size, 10, 1, function (value) {
     B1 = value;
 });
 settings.addRange("Bar 2 size", 0, size, 10, 1, function (value) {
@@ -35,7 +58,7 @@ function setup() {
     setAttributes("antialias", true);
     createEasyCam({ distance: size * 5 });
     document.oncontextmenu = () => false;
-    textFont(MadeleinaSans);
+    textFont(Font);
 }
 
 function draw() {
@@ -43,8 +66,8 @@ function draw() {
     background(200);
 
     push();
-    textAlign(CENTER, CENTER);
-    translate(0, 0, size / 2 + 1);
+    textAlign(CENTER, TOP);
+    translate(0, -size / 2, size / 2 + 1);
     textSize(size / 3);
     text(textCont, 0, 0);
     pop();
