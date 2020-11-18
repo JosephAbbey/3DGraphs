@@ -9,6 +9,7 @@ var B1 = 10,
     B2 = 10,
     B3 = 10,
     B4 = 10;
+var spin = 0;
 
 var settings = QuickSettings.create();
 settings.addText("Title", "Title", function (value) {
@@ -49,6 +50,9 @@ settings.addRange("Bar 3 size", 0, size, 10, 1, function (value) {
 settings.addRange("Bar 4 size", 0, size, 10, 1, function (value) {
     B4 = value;
 });
+settings.addBoolean("Rotate", 0, function (value) {
+    spin = value;
+});
 
 function setup() {
     createCanvas(window.innerWidth - 20, window.innerHeight - 20, WEBGL);
@@ -59,6 +63,10 @@ function setup() {
 }
 
 function draw() {
+    if (spin) {
+        rotateY(radians(millis() / 100));
+    }
+
     noStroke();
     background(200);
 
