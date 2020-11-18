@@ -1,6 +1,6 @@
 let Font;
 function preload() {
-    Font = loadFont("");
+    Font = loadFont("NotoSans-Bold.ttf");
 }
 
 var size = 100;
@@ -12,9 +12,6 @@ var B1 = 10,
 
 var settings = QuickSettings.create();
 settings.addText("Title", "Title", function (value) {
-    textCont = value;
-});
-settings.addText("Font (URL)", "Title", function (value) {
     textCont = value;
 });
 settings.addRange("Size", 0, 1000, 100, 1, function (value) {
@@ -67,6 +64,7 @@ function draw() {
 
     push();
     textAlign(CENTER, TOP);
+    fill(255);
     translate(0, -size / 2, size / 2 + 1);
     textSize(size / 3);
     text(textCont, 0, 0);
