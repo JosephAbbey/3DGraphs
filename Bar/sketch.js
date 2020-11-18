@@ -6,9 +6,9 @@ function preload() {
 var size = 100;
 var theta = 0;
 var textCont = "Title";
-var B1 = 10,
-    B2 = 10,
-    B3 = 10,
+var B1 = 90,
+    B2 = 50,
+    B3 = 30,
     B4 = 10;
 var spin = 0;
 
@@ -39,13 +39,13 @@ settings.addRange("Size", 0, 1000, 100, 1, function (value) {
         settings.setRangeParameters("Bar 4 size", 0, value, 10, 1);
     }
 });
-settings.addRange("Bar 1 size", 0, size, 10, 1, function (value) {
+settings.addRange("Bar 1 size", 0, size, 90, 1, function (value) {
     B1 = value;
 });
-settings.addRange("Bar 2 size", 0, size, 10, 1, function (value) {
+settings.addRange("Bar 2 size", 0, size, 50, 1, function (value) {
     B2 = value;
 });
-settings.addRange("Bar 3 size", 0, size, 10, 1, function (value) {
+settings.addRange("Bar 3 size", 0, size, 30, 1, function (value) {
     B3 = value;
 });
 settings.addRange("Bar 4 size", 0, size, 10, 1, function (value) {
@@ -66,7 +66,7 @@ function setup() {
 
 function draw() {
     if (spin) {
-        rotateY(radians(theta));
+        rotateY(theta);
         theta += 0.5;
     }
 
