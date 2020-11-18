@@ -4,21 +4,26 @@ function preload() {
 }
 
 var textCont = "text";
+var B1 = 10,
+    B2 = 10,
+    B3 = 10,
+    B4 = 10;
 
 var settings = QuickSettings.create();
+settings.addText("Text", "Text", function (value) {
+    textCont = value;
+});
 settings.addRange("Bar 1 size", 1, 100, 10, 1, function (value) {
-    amt = Math.pow(value, 3);
+    B1 = value;
 });
 settings.addRange("Bar 2 size", 0, 100, 10, 1, function (value) {
-    MAXWALLS = value;
-    setup();
+    B2 = value;
 });
 settings.addRange("Bar 3 size", 0, 100, 10, 1, function (value) {
-    MINWALLS = value;
-    setup();
+    B3 = value;
 });
 settings.addRange("Bar 4 size", 6, 50, 10, 1, function (value) {
-    size = value;
+    B4 = value;
 });
 
 function setup() {
