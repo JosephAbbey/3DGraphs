@@ -1,2 +1,2 @@
 # 3DGraphs
-Bar: https://josephabbey.github.io/3Dgraphs/Bar/
+Bar: https://josephabbey.github.io/3DGraphs/Bar/
