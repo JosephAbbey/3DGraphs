@@ -1,6 +1,8 @@
 let Font;
 function preload() {
-    data = loadJSON("sample_data.json");
+    data = loadJSON(
+        "https://raw.githubusercontent.com/JosephAbbey/3DGraphs/master/Line/sample_data.json"
+    );
     Font = loadFont("https://josephabbey.github.io/Assets/NotoSans-Bold.ttf");
 }
 
@@ -13,9 +15,13 @@ var settings = QuickSettings.create();
 settings.addText("Title", "Title", function (value) {
     textCont = value;
 });
-settings.addText("Data URL", "sample_data.json", function (value) {
-    data = loadJSON(value);
-});
+settings.addText(
+    "Data URL",
+    "https://raw.githubusercontent.com/JosephAbbey/3DGraphs/master/Line/sample_data.json",
+    function (value) {
+        data = loadJSON(value);
+    }
+);
 settings.addRange("Size", 0, 1000, 100, 1, function (value) {
     size = value;
 });
