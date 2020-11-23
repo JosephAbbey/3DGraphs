@@ -74,14 +74,6 @@ function draw() {
     background(200);
 
     push();
-    textAlign(CENTER, TOP);
-    fill(255);
-    translate(0, -size / 2, size / 2 + 1);
-    textSize(size / 3);
-    text(textCont, 0, 0);
-    pop();
-
-    push();
     fill(255, 0, 0);
     translate(size / 4, size / 2 - B1 / 2, size / 4);
     box(size / 4, B1, size / 4);
@@ -114,4 +106,12 @@ function draw() {
     pop();
     fill(255, 30);
     box(size);
+
+    push();
+    textAlign(CENTER, TOP);
+    fill(255);
+    translate(0, -size / 2, size / 2 + 1);
+    textSize(size / 3);
+    text(textCont, 0, 0);
+    pop();
 }
