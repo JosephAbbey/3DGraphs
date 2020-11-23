@@ -6,56 +6,20 @@ function preload() {
 var size = 100;
 var theta = 0;
 var textCont = "Title";
-var B1 = 90,
-    B2 = 50,
-    B3 = 30,
-    B4 = 10;
+var X1 = 90,
+    Y1 = 50,
+    Z1 = 30;
+var X2 = 30,
+    Y2 = 60,
+    Z2 = 30;
+var X3 = 10,
+    Y3 = 80,
+    Z3 = 30;
+var X4 = 50,
+    Y4 = 30,
+    Z4 = 30;
 var spin = 0;
-
-var settings = QuickSettings.create();
-settings.addText("Title", "Title", function (value) {
-    textCont = value;
-});
-settings.addRange("Size", 0, 1000, 100, 1, function (value) {
-    size = value;
-    if (B1 <= value) {
-        settings.setRangeParameters("Bar 1 size", 0, value, B1, 1);
-    } else {
-        settings.setRangeParameters("Bar 1 size", 0, value, 10, 1);
-    }
-    if (B2 <= value) {
-        settings.setRangeParameters("Bar 2 size", 0, value, B2, 1);
-    } else {
-        settings.setRangeParameters("Bar 2 size", 0, value, 10, 1);
-    }
-    if (B3 <= value) {
-        settings.setRangeParameters("Bar 3 size", 0, value, B3, 1);
-    } else {
-        settings.setRangeParameters("Bar 3 size", 0, value, 10, 1);
-    }
-    if (B4 <= value) {
-        settings.setRangeParameters("Bar 4 size", 0, value, B4, 1);
-    } else {
-        settings.setRangeParameters("Bar 4 size", 0, value, 10, 1);
-    }
-});
-settings.addRange("Bar 1 size", 0, size, 90, 1, function (value) {
-    B1 = value;
-});
-settings.addRange("Bar 2 size", 0, size, 50, 1, function (value) {
-    B2 = value;
-});
-settings.addRange("Bar 3 size", 0, size, 30, 1, function (value) {
-    B3 = value;
-});
-settings.addRange("Bar 4 size", 0, size, 10, 1, function (value) {
-    B4 = value;
-});
-settings.addBoolean("Rotate", 0, function (value) {
-    theta = 0;
-    spin = value;
-});
-
+        
 function setup() {
     createCanvas(window.innerWidth - 20, window.innerHeight - 20, WEBGL);
     setAttributes("antialias", true);
@@ -83,26 +47,9 @@ function draw() {
 
     push();
     fill(255, 0, 0);
-    translate(size / 4, size / 2 - B1 / 2, size / 4);
-    box(size / 4, B1, size / 4);
-    pop();
-
-    push();
-    fill(255, 255, 0);
-    translate(size / 4, size / 2 - B2 / 2, -size / 4);
-    box(size / 4, B2, size / 4);
-    pop();
-
-    push();
-    fill(0, 255, 0);
-    translate(-size / 4, size / 2 - B3 / 2, -size / 4);
-    box(size / 4, B3, size / 4);
-    pop();
-
-    push();
-    fill(0, 0, 255);
-    translate(-size / 4, size / 2 - B4 / 2, size / 4);
-    box(size / 4, B4, size / 4);
+    translate(size / 2, 0, 0);
+    line(0, 0, 0, X1, Y1, Z1);
+    line(X1, Y1, Z1, X2, Y2, Z2);
     pop();
 
     push();
