@@ -52,8 +52,10 @@ settings.addRange("Bar 4 size", 0, size, 10, 1, function (value) {
     B4 = value;
 });
 settings.addBoolean("Rotate", 0, function (value) {
-    theta = 0;
     spin = value;
+});
+settings.addButton("Reset angle", () => {
+    theta = 0;
 });
 
 function setup() {
@@ -65,8 +67,8 @@ function setup() {
 }
 
 function draw() {
+    rotateY(theta);
     if (spin) {
-        rotateY(theta);
         theta += 0.5;
     }
 

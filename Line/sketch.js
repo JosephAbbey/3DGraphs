@@ -20,6 +20,52 @@ var X4 = 75,
     Z4 = 20;
 var spin = 0;
 
+var settings = QuickSettings.create();
+settings.addText("Title", "Title", function (value) {
+    textCont = value;
+});
+settings.addRange("Size", 0, 1000, 100, 1, function (value) {
+    size = value;
+    if (B1 <= value) {
+        settings.setRangeParameters("Bar 1 size", 0, value, B1, 1);
+    } else {
+        settings.setRangeParameters("Bar 1 size", 0, value, 10, 1);
+    }
+    if (B2 <= value) {
+        settings.setRangeParameters("Bar 2 size", 0, value, B2, 1);
+    } else {
+        settings.setRangeParameters("Bar 2 size", 0, value, 10, 1);
+    }
+    if (B3 <= value) {
+        settings.setRangeParameters("Bar 3 size", 0, value, B3, 1);
+    } else {
+        settings.setRangeParameters("Bar 3 size", 0, value, 10, 1);
+    }
+    if (B4 <= value) {
+        settings.setRangeParameters("Bar 4 size", 0, value, B4, 1);
+    } else {
+        settings.setRangeParameters("Bar 4 size", 0, value, 10, 1);
+    }
+});
+settings.addRange("Bar 1 size", 0, size, 90, 1, function (value) {
+    B1 = value;
+});
+settings.addRange("Bar 2 size", 0, size, 50, 1, function (value) {
+    B2 = value;
+});
+settings.addRange("Bar 3 size", 0, size, 30, 1, function (value) {
+    B3 = value;
+});
+settings.addRange("Bar 4 size", 0, size, 10, 1, function (value) {
+    B4 = value;
+});
+settings.addBoolean("Rotate", 0, function (value) {
+    spin = value;
+});
+settings.addButton("Reset angle", () => {
+    theta = 0;
+});
+
 function setup() {
     createCanvas(window.innerWidth - 20, window.innerHeight - 20, WEBGL);
     setAttributes("antialias", true);
@@ -29,8 +75,8 @@ function setup() {
 }
 
 function draw() {
+    rotateY(theta);
     if (spin) {
-        rotateY(theta);
         theta += 0.5;
     }
 
