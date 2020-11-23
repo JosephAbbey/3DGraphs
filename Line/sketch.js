@@ -1,6 +1,6 @@
 let Font;
 function preload() {
-    Font = loadFont("NotoSans-Bold.ttf");
+    Font = loadFont("https://josephabbey.github.io/Assets/NotoSans-Bold.ttf");
 }
 
 var size = 100;
@@ -19,7 +19,7 @@ var X4 = 75,
     Y4 = 30,
     Z4 = 30;
 var spin = 0;
-        
+
 function setup() {
     createCanvas(window.innerWidth - 20, window.innerHeight - 20, WEBGL);
     setAttributes("antialias", true);
