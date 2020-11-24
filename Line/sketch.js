@@ -62,14 +62,6 @@ function draw() {
     noStroke();
 
     push();
-    textAlign(CENTER, TOP);
-    fill(255);
-    translate(0, -size / 2, size / 2 + 1);
-    textSize(size / 3);
-    text(textCont, 0, 0);
-    pop();
-
-    push();
     fill(0);
     translate(0, size / 2 + 1, 0);
     angleMode(DEGREES);
@@ -78,4 +70,12 @@ function draw() {
     pop();
     fill(255, 30);
     box(size);
+
+    push();
+    textAlign(CENTER, TOP);
+    fill(255);
+    translate(0, -size / 2, size / 2 + 1);
+    textSize(size / 3);
+    text(textCont, 0, 0);
+    pop();
 }
