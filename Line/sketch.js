@@ -3,8 +3,8 @@ function preload() {
     data = loadJSON("sample_data.json");
     Font = loadFont("https://josephabbey.github.io/Assets/NotoSans-Bold.ttf");
 }
-
-var size = 100;
+var size;
+var curve = true;
 var theta = 0;
 var textCont = "Title";
 var spin = 0;
@@ -15,9 +15,10 @@ settings.addText("Title", "Title", function (value) {
 });
 settings.addText("Data URL", "sample_data.json", function (value) {
     data = loadJSON(value);
+    size = data.size;
 });
-settings.addRange("Size", 0, 1000, 100, 1, function (value) {
-    size = value;
+settings.addBoolean("Curve", 1, function (value) {
+    curve = value;
 });
 settings.addBoolean("Rotate", 0, function (value) {
     spin = value;
@@ -27,36 +28,50 @@ settings.addButton("Reset angle", () => {
 });
 
 function setup() {
+    size = data.size;
     createCanvas(window.innerWidth - 20, window.innerHeight - 20, WEBGL);
     setAttributes("antialias", true);
     createEasyCam({ distance: size * 5 });
     document.oncontextmenu = () => false;
     textFont(Font);
+    curveDetail(100);
 }
 
 function draw() {
     rotateY(theta);
     if (spin) {
-        theta += 0.5;
+        theta += 0.2;
     }
 
     noStroke();
+    noFill();
     background(200);
 
     push();
     stroke(255, 0, 0);
     translate(-size / 2, 0, 0);
-    for (var i = 0; i < Object.keys(data).length - 1; i++) {
-        var point = data[i];
-        if (!point.x) {
-            point.x = (size / (Object.keys(data).length - 1)) * i;
+    var point = data[0];
+    beginShape();
+    if (curve) {
+        curveVertex(point.x, point.y, point.z);
+        for (var i = 0; i < Object.keys(data).length - 1; i++) {
+            point = data[i];
+            if (!point.x) {
+                point.x = (size / (Object.keys(data).length - 2)) * i;
+            }
+            curveVertex(point.x, point.y, point.z);
         }
-        var nextPoint = data[i + 1];
-        if (!nextPoint.x) {
-            nextPoint.x = (size / (Object.keys(data).length - 1)) * (i + 1);
+        curveVertex(point.x, point.y, point.z);
+    } else {
+        for (var i = 0; i < Object.keys(data).length - 1; i++) {
+            point = data[i];
+            if (!point.x) {
+                point.x = (size / (Object.keys(data).length - 2)) * i;
+            }
+            vertex(point.x, point.y, point.z);
         }
-        line(point.x, point.y, point.z, nextPoint.x, nextPoint.y, nextPoint.z);
     }
+    endShape();
     pop();
 
     noStroke();
