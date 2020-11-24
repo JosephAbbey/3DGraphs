@@ -31,7 +31,7 @@ function setup() {
     size = data.size;
     createCanvas(window.innerWidth - 20, window.innerHeight - 20, WEBGL);
     setAttributes("antialias", true);
-    createEasyCam({ distance: size * 5 });
+    createEasyCam({ distance: size + 100 });
     document.oncontextmenu = () => false;
     textFont(Font);
     curveDetail(100);
