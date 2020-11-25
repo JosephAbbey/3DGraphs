@@ -34,14 +34,15 @@ function setup() {
 }
 
 function draw() {
+    noStroke();
+    background(200);
+    pointLight(255, 255, 255, size / 2 + 10, size / 2 + 10, size / 2 + 10);
+    angleMode(DEGREES);
+
     rotateY(theta);
     if (spin) {
-        theta += 0.05;
+        theta += 0.3;
     }
-
-    noStroke();
-    angleMode(DEGREES);
-    background(200);
 
     var prevAngle = 0;
     fill(255, 0, 0);
