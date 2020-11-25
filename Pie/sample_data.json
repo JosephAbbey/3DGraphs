@@ -1,0 +1,16 @@
+{
+    "size": 100,
+    "thickness": 10,
+    "0": {
+        "angle": 90,
+        "colour": 0
+    },
+    "1": {
+        "angle": 90,
+        "colour": 120
+    },
+    "2": {
+        "angle": 90,
+        "colour": 80
+    }
+}
